@@ -1,16 +1,24 @@
-import { Header } from './components/Header';
-import { Main } from './components/Main'
-import { Content } from './components/Content';
+import { useState } from 'react';
 
-import './App.css';
+import { Header } from './components/Header';
+import { TodoList } from './components/TodoList';
+
+import { Global } from './styles/Global'
 
 
 export function App() {
+
+  const [isMoon, setIsMoon] = useState(false)
+
+  function switchType(value: boolean){
+    setIsMoon(value)
+  }
+
   return (
     <>
-      <Header />
-      <Main />
-      {/* <Content /> */}
+      <Global />
+      <Header isMoon={isMoon}/>
+      <TodoList isMoon={isMoon} setIsMoon={switchType}/>
     </>
   );
 }
